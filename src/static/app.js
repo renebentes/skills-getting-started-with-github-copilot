@@ -27,7 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="participants-section">
               <strong>Participantes:</strong>
               <ul class="participants-list">
-                ${details.participants.map(email => `<li>${email}</li>`).join("")}
+                ${details.participants.map(email => {
+                  const li = document.createElement("li");
+                  li.textContent = email;
+                  return li.outerHTML;
+                }).join("")}
               </ul>
             </div>
           `;
