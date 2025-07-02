@@ -23,11 +23,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Cria a lista de participantes
         let participantsHTML = "";
         if (details.participants.length > 0) {
+          const participantsList = details.participants.map(email => {
+            const li = document.createElement("li");
+            li.textContent = email;
+            return li.outerHTML;
+          }).join("");
+
           participantsHTML = `
             <div class="participants-section">
               <strong>Participantes:</strong>
               <ul class="participants-list">
-                ${details.participants.map(email => `<li>${email}</li>`).join("")}
+                ${participantsList}
               </ul>
             </div>
           `;
